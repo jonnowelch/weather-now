@@ -43,7 +43,7 @@ export default class App extends Component {
       .then((data) => {
         this.setState({ data });
       })
-      .catch((error) => console.error(error, "hello1"))
+      .catch((error) => {})
       .finally(() => {
         this.setState({ isLoading: false });
       });
