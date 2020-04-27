@@ -181,7 +181,7 @@ export default class App extends Component {
                   </Text>
                 </Col>
               </Grid>
-              <Grid style={styles.sun}>
+              <Grid style={styles.sunDivider}>
                 <Col>
                   <Text style={styles.infoGrid}>
                     Sunrise: {dateUnixConverter(data.sys.sunrise)}
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     color: "grey",
   },
-  sun: {
+  sunDivider: {
     paddingTop: 240,
   },
   sunPics: {
