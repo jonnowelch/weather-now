@@ -18,7 +18,6 @@ import {
 import Header from "./shared/Header";
 import ChangeCity from "./shared/changeCity";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Col, Grid, Row } from "react-native-easy-grid";
 import { APIkey } from "./APIkey";
 import { weatherImages } from "./shared/weatherImages";
 
@@ -137,76 +136,64 @@ export default class App extends Component {
                 </TouchableWithoutFeedback>
               </Modal>
             </View>
-            <View>
-              <Grid style={styles.cityChooser}>
-                <Col size={9}>
-                  <Text style={styles.city}>
-                    {data.name}, {data.sys.country}
-                  </Text>
-                </Col>
-                <Col size={1}>
-                  <MaterialCommunityIcons
-                    style={styles.modalClose}
-                    name='magnify'
-                    size={24}
-                    color='#E0FBFC'
-                    onPress={() => this.openModal()}
-                  />
-                </Col>
-              </Grid>
+            <View style={styles.cityContainer}>
+              <View style={styles.rowContainer}>
+                <Text style={styles.city}>
+                  {data.name}, {data.sys.country}
+                </Text>
+
+                <MaterialCommunityIcons
+                  style={styles.modalClose}
+                  name='magnify'
+                  size={24}
+                  color='#E0FBFC'
+                  onPress={() => this.openModal()}
+                />
+              </View>
             </View>
-            <View style={styles.divider}></View>
             <Text style={styles.temp}>{tempFormatter(data.main.temp)}°c</Text>
             <View style={styles.container}>
-              <Grid style={styles.infoGrid}>
-                <Col>
-                  <Text style={styles.infoGrid}>
-                    Feels like: {tempFormatter(data.main.feels_like)}°c
-                  </Text>
+              <Text style={styles.infoGrid}>
+                Feels like: {tempFormatter(data.main.feels_like)}°c
+              </Text>
 
-                  <Text style={styles.infoGrid}>
-                    Max Temp: {tempFormatter(data.main.temp_max)}°c
-                  </Text>
+              <Text style={styles.infoGrid}>
+                Max Temp: {tempFormatter(data.main.temp_max)}°c
+              </Text>
 
-                  <Text style={styles.infoGrid}>
-                    Min Temp: {tempFormatter(data.main.temp_min)}°c
-                  </Text>
-                </Col>
-                <Col>
-                  <Image source={weatherImages.weather[data.weather[0].icon]} />
+              <Text style={styles.infoGrid}>
+                Min Temp: {tempFormatter(data.main.temp_min)}°c
+              </Text>
+              <Image
+                style={styles.currentWeatherImage}
+                source={weatherImages.weather[data.weather[0].icon]}
+              />
 
-                  <Text style={styles.infoGrid}>
-                    {" "}
-                    {capitaliseWeather(data.weather[0].description)}
-                  </Text>
-                </Col>
-              </Grid>
-              <Grid style={styles.sunDivider}>
-                <Col>
+              <Text style={styles.infoGrid}>
+                {capitaliseWeather(data.weather[0].description)}
+              </Text>
+              <View style={styles.sunContainer}>
+                <View style={styles.rowContainer}>
                   <Text style={styles.infoGrid}>
                     Sunrise: {dateUnixConverter(data.sys.sunrise)}
                   </Text>
-                </Col>
-                <Col>
                   <Text style={styles.infoGrid}>
-                    Sunset: {dateUnixConverter(data.sys.sunset)}
+                    {"         "} Sunset: {dateUnixConverter(data.sys.sunset)}
                   </Text>
-                </Col>
-              </Grid>
-              <Grid>
-                <Col>
+                </View>
+              </View>
+              <View style={styles.sunPicContainer}>
+                <View style={styles.rowContainer}>
                   <Image
-                    style={styles.sunPics}
+                    style={styles.sunRisePic}
                     source={require("./assets/sunrise.png")}
                   />
-                </Col>
-                <Col>
                   <Image
-                    style={styles.sunPics}
+                    style={styles.sunSetPic}
                     source={require("./assets/sunset.png")}
                   />
-                </Col>
-              </Grid>
+                </View>
+              </View>
             </View>
           </View>
         )}
@@ -218,20 +205,31 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   main: {
     padding: 24,
-    backgroundColor: "grey",
     alignItems: "stretch",
     flex: 1,
+    ...Platform.select({
+      android: { backgroundColor: "grey" },
+      ios: { backgroundColor: "grey" },
+    }),
   },
-  loadedData: {
-    flexDirection: "column",
-    flex: 1,
+  cityContainer: {
+    padding: 8,
   },
-
+  rowContainer: {
+    flexDirection: "row",
+  },
+  modalClose: {
+    alignSelf: "flex-end",
+    color: "white",
+    marginLeft: 10,
+    marginBottom: 10,
+  },
   city: {
     fontWeight: "bold",
     color: "#E0FBFC",
     textAlign: "center",
     fontSize: 40,
+    flexGrow: 1,
   },
   temp: {
     color: "#E0FBFC",
@@ -241,7 +239,7 @@ const styles = StyleSheet.create({
 
   infoGrid: {
     color: "#E0FBFC",
-    textAlign: "left",
+    textAlign: "center",
     fontSize: 19,
     fontWeight: "bold",
     padding: 5,
@@ -254,26 +252,27 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     color: "grey",
   },
-  sunDivider: {
+  sun: {
     paddingTop: 240,
   },
-  sunPics: {
-    width: 40,
-    height: 40,
-    position: "absolute",
+  sunRisePic: {
+    width: 60,
+    height: 60,
     bottom: 0,
-    alignSelf: "center",
+    marginLeft: "20%",
+  },
+  sunSetPic: {
+    width: 60,
+    height: 60,
+    bottom: 0,
+    marginLeft: "30%",
   },
   modal: {
     backgroundColor: "grey",
     flex: 1,
   },
-  modalClose: {
-    alignContent: "center",
-    alignItems: "center",
-    alignSelf: "flex-end",
-    color: "white",
-    paddingTop: 20,
+  currentWeatherImage: {
+    marginLeft: "33%",
   },
   divider: { paddingTop: 100 },
 });

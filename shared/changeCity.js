@@ -8,7 +8,6 @@ import { countryCodes } from "./countryCodes";
 export default function ChangeCity({ getNewCityData }) {
   return (
     <View>
-      {/* <Header /> */}
       <Text style={styles.info}>
         {`Please enter the location below you would like to see the weather for.`}
       </Text>
@@ -77,6 +76,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     fontWeight: "bold",
     height: 40,
-    paddingBottom: 30,
+    marginHorizontal: 10,
   },
 });
