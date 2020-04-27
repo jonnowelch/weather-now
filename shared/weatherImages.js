@@ -2,6 +2,7 @@ export const weatherImages = {
   weather: {
     "01d": require("../assets/01d.png"),
     "02d": require("../assets/02d.png"),
+    "02n": require("../assets/02d.png"),
     "03d": require("../assets/03d.png"),
     "04d": require("../assets/04d.png"),
     "09d": require("../assets/09d.png"),
