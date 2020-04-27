@@ -1,0 +1,43 @@
+{
+  "base": "stations",
+  "clouds": {
+    "all": 77
+  },
+  "cod": 200,
+  "coord": {
+    "lat": 53.48,
+    "lon": -2.24
+  },
+  "dt": 1587571645,
+  "id": 2643123,
+  "main": {
+    "feels_like": 287.54,
+    "humidity": 39,
+    "pressure": 1022,
+    "temp": 291.67,
+    "temp_max": 293.71,
+    "temp_min": 289.82
+  },
+  "name": "Manchester",
+  "sys": {
+    "country": "GB",
+    "id": 1379,
+    "sunrise": 1587531143,
+    "sunset": 1587583322,
+    "type": 1
+  },
+  "timezone": 3600,
+  "visibility": 10000,
+  "weather": [
+    {
+      "description": "broken clouds",
+      "icon": "04d",
+      "id": 803,
+      "main": "Clouds"
+    }
+  ],
+  "wind": {
+    "deg": 90,
+    "speed": 4.1
+  }
+}
