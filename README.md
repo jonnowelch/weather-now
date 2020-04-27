@@ -39,7 +39,7 @@ This is a react native app made using Javascript. It calls on the open API from 
 
 Packages used:
 
-Formik forms - Allows easy capture of data and inline validation
-react-native-easy-grid - Allows grid layout to be used easily
-react-native-picker-select - A more customisable dropdown menu than the standard Picker
+Formik forms - Allows easy capture of data and inline validation \
+react-native-easy-grid - Allows grid layout to be used easily \
+react-native-picker-select - A more customisable dropdown menu than the standard Picker \
 Mocha & Chai - Utility functions in the app were created using TDD and tested using Mocha and Chai.
