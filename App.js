@@ -50,7 +50,7 @@ export default class App extends Component {
 
   getNewCityData = (city, country) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=64a619826f3f25b2ab4001facc7e75e2`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${APIkey}`
     )
       .then((response) => response.json())
       .then((json) => {
